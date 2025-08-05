@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 **Data & Business Intelligence Analyst**
 
 [LinkedIn](https://www.linkedin.com/in/tongai-zinaka/) | [GitHub](https://github.com/tongai-zinaka)
