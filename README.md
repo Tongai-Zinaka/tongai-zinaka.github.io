@@ -56,7 +56,7 @@ As part of a four-person team, I developed a BI solution to help a community hou
 
 *   **Skills:** Power BI, DAX, Team Collaboration, ETL, Reporting, Storytelling
 *   **Tools:** Power BI, DAX Studio
-*   **[View Project Details]((https://github.com/Tongai-Zinaka/RDAMP_LMS_Analytics_RCHG))**
+*   **[View Project Details](https://github.com/Tongai-Zinaka/RDAMP_LMS_Analytics_RCHG)**
 
 ---
 
