@@ -1,6 +1,20 @@
-**Data & Business Intelligence Analyst**
+<table>
+  <tr>
+    <td style="width: 35%; border: none; padding-right: 20px;">
+      <img src="https://github.com/Tongai-Zinaka/tongai-zinaka.github.io/blob/main/Designer%20(4).jpeg?raw=true" alt="Data Analyst Graphic" style="width:100%;">
+    </td>
+    <td style="width: 65%; border: none; vertical-align: middle;">
+      <h1>Tongai Zinaka</h1>
+      <h3>Data & Business Intelligence Analyst</h3>
+      <p>
+        <a href="mailto:tongaizinaka@gmail.com">tongaizinaka@gmail.com</a><br>
+        +263772207711<br><br>
+        <a href="https://www.linkedin.com/in/tongai-zinaka/">LinkedIn</a> | <a href="https://github.com/tongai-zinaka">GitHub</a>
+      </p>
+    </td>
+  </tr>
+</table>
 
-[LinkedIn](https://www.linkedin.com/in/tongai-zinaka/) | [GitHub](https://github.com/tongai-zinaka)
 
 ---
 
