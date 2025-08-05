@@ -4,8 +4,7 @@
       <img src="https://github.com/Tongai-Zinaka/tongai-zinaka.github.io/blob/main/Designer%20(4).jpeg?raw=true" alt="Data Analyst Graphic" style="width:100%;">
     </td>
     <td style="width: 65%; border: none; vertical-align: middle;">
-      <h1>Tongai Zinaka</h1>
-      <h3>Data & Business Intelligence Analyst</h3>
+      <h2>Data & Business Intelligence Analyst</h2>
       <p>
         <a href="mailto:tongaizinaka@gmail.com">tongaizinaka@gmail.com</a><br>
         +263772207711<br><br>
