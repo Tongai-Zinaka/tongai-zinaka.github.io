@@ -39,7 +39,7 @@ This project focused on building a robust, query-optimized reporting system for 
 
 ![LMS Dashboard Screenshot](https://github.com/Tongai-Zinaka/RDAMP_LMS_Analytics_RCHG/blob/main/Dashboard/Screenshots/Engagement%20Patterns.png?raw=true)
 
-As part of a four-person team, I developed a BI solution to help a community housing group analyze Learning Management System (LMS) data. I was responsible for developing the Power BI dashboard, translating a complex snowflake data model into three interactive views covering compliance, performance, and user engagement.
+As part of a four-person team, I developed a BI solution to help a community housing group analyze Learning Management System (LMS) data. I was responsible for developing the Power BI dashboard, translating a complex snowflake data model into three interactive views covering compliance, performance, and user engagement. 
 
 *   **Skills:** Power BI, DAX, Team Collaboration, ETL, Reporting, Storytelling
 *   **Tools:** Power BI, DAX Studio
