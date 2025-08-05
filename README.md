@@ -49,8 +49,7 @@ As part of a four-person team, I developed a BI solution to help a community hou
 
 ### 3. Ace Superstore: Retail Sales Analysis
 
-![Sales Analysis Screenshot](<img width="1381" height="796" alt="465777179-43792281-488d-46fb-882c-953f45f9f645" src="https://github.com/user-attachments/assets/97ee626c-a79a-4ec1-afa6-608015848592" />
-)
+![Sales Analysis Screenshot](https://github.com/Tongai-Zinaka/RDAMP-Sales-Analysis/blob/main/465777179-43792281-488d-46fb-882c-953f45f9f645.png?raw=true)
 
 This project involved conducting an initial exploratory data analysis on raw sales data from Ace Superstore. I performed extensive data cleaning and quality assurance in Power Query, then built an interactive dashboard to identify key insights related to regional performance, top/bottom selling products, and online vs. in-store sales channels.
 
