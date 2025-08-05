@@ -44,7 +44,7 @@ This project focused on building a robust, query-optimized reporting system for 
 
 *   **Skills:** Data Modeling (Star Schema), SQL (MySQL), Power BI, DAX, Profitability Analysis
 *   **Tools:** MySQL, Power BI Desktop
-*   **[View Project Details](project-dimensional-model.md)**
+*   **[View Project Details](https://github.com/Tongai-Zinaka/RDAMP-Dimensional-Model-PowerBI)**
 
 ---
 
@@ -56,7 +56,7 @@ As part of a four-person team, I developed a BI solution to help a community hou
 
 *   **Skills:** Power BI, DAX, Team Collaboration, ETL, Reporting, Storytelling
 *   **Tools:** Power BI, DAX Studio
-*   **[View Project Details](project-lms-analytics.md)**
+*   **[View Project Details]((https://github.com/Tongai-Zinaka/RDAMP_LMS_Analytics_RCHG))**
 
 ---
 
@@ -68,4 +68,4 @@ This project involved conducting an initial exploratory data analysis on raw sal
 
 *   **Skills:** Exploratory Data Analysis (EDA), Power BI (Power Query), Data Cleaning, Reporting
 *   **Tools:** Power BI, Excel
-*   **[View Project Details](project-sales-analysis.md)**
+*   **[View Project Details](https://github.com/Tongai-Zinaka/RDAMP-Sales-Analysis)**
