@@ -19,7 +19,7 @@ description: A portfolio showcasing projects in data analysis, business intellig
 url: "https://tongai-zinaka.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Remote Theme
-remote_theme: "mmistakes/minimal-mistakes-jekyll@4.24.0"
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 
 # Minimal Mistakes Theme Settings
 minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
