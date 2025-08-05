@@ -1,4 +1,3 @@
-<img width="1322" height="748" alt="image" src="https://github.com/user-attachments/assets/acb91d11-04e2-4686-828c-9a90343c2f13" /># Tongai Zinaka
 **Data & Business Intelligence Analyst**
 
 [LinkedIn](https://www.linkedin.com/in/tongai-zinaka/) | [GitHub](https://github.com/tongai-zinaka)
