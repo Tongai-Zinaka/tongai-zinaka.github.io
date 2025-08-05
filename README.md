@@ -1,7 +1,7 @@
 <table style="border: none;">
   <tr>
     <td style="width: 35%; border: none; padding-right: 20px;">
-      <img src="https://www.linkedin.com/in/tongai-zinaka/" alt="Data Analyst Graphic" style="width:100%;">
+      <img src="https://github.com/Tongai-Zinaka/tongai-zinaka.github.io/blob/main/Designer%20(4).jpeg?raw=true" alt="Data Analyst Graphic" style="width:100%;">
     </td>
     <td style="width: 65%; border: none; vertical-align: middle;">
       <h1>Data & Business Intelligence Analyst</h1>
