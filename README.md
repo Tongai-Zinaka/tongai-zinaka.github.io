@@ -13,7 +13,7 @@ I am a data analyst with a passion for transforming complex data into actionable
 *   **Business Intelligence:** Power BI (Power Query, DAX, Data Modeling)
 *   **Databases & SQL:** SQL Server, MySQL (Data Modeling, Star Schema, Views)
 *   **Data Analysis:** Exploratory Data Analysis (EDA), ETL, Data Cleaning
-*   **Project Management:** Agile Methodologies, Jira
+*   **Project Management:** Agile Methodologies, Jira 
 
 ---
 
