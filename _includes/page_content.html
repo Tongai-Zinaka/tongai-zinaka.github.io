@@ -1,52 +1,91 @@
-<section id="services">
 <!-- Page Content -->
-{% for post in site.posts reversed %}
-  {% capture thecycle %}{% cycle 'odd', 'even' %}{% endcapture %}
-    {% if thecycle == 'odd' %}
-    <div class="content-section-a">
 
-        <div class="container">
+<div class="content-section-a">
 
-            <div class="row">
-                <div class="col-lg-5 col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">{{ post.title }}</h2>
-                    <div class="lead">{{ post.content }}</div>
-                </div>
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="img/services/{{ post.img }}" alt="">
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">About Me</h2>
+                <p class="lead">I am a data analyst with a passion for transforming complex data into actionable business intelligence. With a strong foundation in SQL, Power BI, and data modeling, I specialize in the end-to-end process of data analysis: from cleaning and structuring data to building insightful dashboards that drive strategic decision-making.</p>
             </div>
-
+            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                <img class="img-responsive" src="img/profile-graphic.png" alt="Profile Graphic">
+            </div>
         </div>
-        <!-- /.container -->
 
     </div>
-    <!-- /.content-section-a -->
-    {% else %}
+    <!-- /.container -->
 
-    <div class="content-section-b">
+</div>
+<!-- /.content-section-a -->
 
-        <div class="container">
+<div class="content-section-b">
 
-            <div class="row">
-                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">{{ post.title }}</h2>
-                    <div class="lead">{{ post.content }}</div>
-                </div>
-                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                  <img class="img-responsive" src="img/services/{{ post.img }}" alt="">
-                </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Project 1: Dimensional Modeling & Profitability Analysis</h2>
+                <p class="lead">This project focused on building a robust, query-optimized Star Schema model in SQL. The resulting Power BI dashboard uncovered a critical, previously unseen profitability crisis, proving that high revenue did not translate to profit.</p>
+                <p><a class="btn btn-primary" href="https://github.com/Tongai-Zinaka/RDAMP-Dimensional-Model-PowerBI" target="_blank" role="button">View on GitHub »</a></p>
             </div>
-
+            <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                <img class="img-responsive" src="img/profitability-dashboard-screenshot.png" alt="Profitability Dashboard">
+            </div>
         </div>
-        <!-- /.container -->
 
     </div>
-    <!-- /.content-section-b -->
-    {% endif %}
-{% endfor %}
-</section>
+    <!-- /.container -->
+
+</div>
+<!-- /.content-section-b -->
+
+<div class="content-section-a">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-5 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Project 2: LMS Analytics (Group Project)</h2>
+                <p class="lead">As the BI Analyst on a four-person team, I developed a Power BI solution to analyze Learning Management System data, focusing on compliance, user engagement, and performance outcomes for a community housing group.</p>
+                <p><a class="btn btn-primary" href="https://github.com/Tongai-Zinaka/RDAMP_LMS_Analytics_RCHG" target="_blank" role="button">View on GitHub »</a></p>
+            </div>
+            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                <img class="img-responsive" src="img/lms-dashboard-screenshot.png" alt="LMS Dashboard">
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.content-section-a -->
+
+<div class="content-section-b">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Project 3: Retail Sales Analysis</h2>
+                <p class="lead">An end-to-end exploratory data analysis of raw sales data. This project involved extensive data cleaning in Power Query and building an interactive dashboard to identify key insights related to regional performance and top-selling products.</p>
+                <p><a class="btn btn-primary" href="https://github.com/Tongai-Zinaka/RDAMP-Sales-Analysis" target="_blank" role="button">View on GitHub »</a></p>
+            </div>
+            <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                <img class="img-responsive" src="img/sales-analysis-screenshot.png" alt="Sales Analysis Dashboard">
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.content-section-b -->
