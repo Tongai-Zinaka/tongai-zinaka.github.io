@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
-	{% include head.html %}
-
-	<body>
-		{% include header.html %}
-		{% include about.html %}
-		{% include page_content.html %}
-		{% include contact.html %}
-		{% include footer.html %}
-		{% include js.html %}
-	</body>
+    {% include head.html %}
+<body>
+    {% include header.html %}
+    
+    <!-- This will now correctly display the content from index.html or resume.html -->
+    {{ content }} 
+    
+    {% include contact.html %}
+    {% include footer.html %}
+    {% include js.html %}
+</body>
 </html>
