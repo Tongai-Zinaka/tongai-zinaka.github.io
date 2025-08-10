@@ -1,64 +1,25 @@
-#
-# This file contains configuration flags to customize your site
-#
-
-# Name of your site (displayed in the header)
-name: Tongai Zinaka | Data & Business Intelligence Analyst
-
-# Short bio or description (displayed in the header)
-description: Data & Business Intelligence Analyst
-
-# URL of your avatar or profile pic. Upload your cropped graphic to the 'img' folder and update this link.
-avatar: https://raw.githubusercontent.com/Tongai-Zinaka/tongai-zinaka.github.io/main/img/profile-graphic.png
-
-#
-# Flags below are optional
-#
-
-# Includes an icon in the footer for each username you enter
-footer-links:
-  dribbble:
-  email: tongaizinaka@gmail.com
-  facebook:
-  flickr:
-  github: tongai-zinaka
-  instagram:
-  linkedin: tongai-zinaka
-  pinterest:
-  rss: 
-  twitter:
-  stackoverflow: 
-  youtube:
-  googleplus:
-
-
-# Enter your Disqus shortname for commenting on posts
-disqus:
-
-# Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
-google_analytics:
-
-# Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
-# Used for Sitemap.xml and your RSS feed
+# Main Configs
 url: https://tongai-zinaka.github.io
+title: Tongai Zinaka
+email: tongaizinaka@gmail.com
+author: Tongai Zinaka
+description: > # Write an awesome description for your new site here.
+  Data & Business Intelligence Analyst specialising in Power BI, SQL, and data modeling. 
+  I transform complex data into actionable insights that drive strategic business decisions.
 
-# You don't need to change any of the configuration flags below!
-#
-permalink: /:title/
-version: v1.2.0
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    css_class: 'highlight'
-sass:
-  style: :expanded
-gems:
-  - jekyll-sitemap
-  - jekyll-feed
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE
-  - README.md
-  - CNAME
+# Head meta for Google search results
+copyright: 'Copyright &copy; 2025 Tongai Zinaka. All Rights Reserved.'
+credits: 'Credits: Landing Page is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com/">Start Bootstrap</a>.'
+
+# Jekyll & Plugins
+markdown: kramdown
+permalink: pretty
+
+# 3rd Party Settings
+social:
+  - title: linkedin
+    url: https://www.linkedin.com/in/tongai-zinaka/
+  - title: github
+    url: https://github.com/tongai-zinaka
+  - title: twitter
+    url: # You can add your twitter URL here or leave it blank
