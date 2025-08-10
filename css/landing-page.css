@@ -31,7 +31,7 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/profile-graphic.png) no-repeat center center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/profile-graphic.png) no-repeat center center;
     background-size: cover;
 }
 
@@ -165,4 +165,5 @@ p.copyright {
     margin: 15px 0 0;
 
 }
+
 
