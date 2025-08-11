@@ -3,6 +3,30 @@ layout: default
 title: Tongai Zinaka | Data & Business Intelligence Analyst
 ---
 
+<!-- Header -->
+<div class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message">
+                    <h1>Tongai Zinaka</h1>
+                    <h3>Data & Business Intelligence Analyst</h3>
+                    <hr class="intro-divider">
+                    <ul class="list-inline intro-social-buttons">
+                        {% for network in site.social %}
+                        <li>
+                            <a href="{{ network.url }}" class="btn btn-default btn-lg" target="_blank"><i class="fa fa-{{ network.title }} fa-fw"></i> <span class="network-name">{{ network.title | capitalize }}</span></a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.intro-header -->
+
 <!-- This anchor is for the 'About' link in the navigation bar -->
 <a name="about"></a>
 
@@ -18,9 +42,7 @@ title: Tongai Zinaka | Data & Business Intelligence Analyst
                 <p class="lead">My passion lies in bridging the gap between raw data and strategic business decisions. I am a detail-oriented Data Analyst with a strong foundation in the complete data lifecycle, from cleaning and modeling to creating intuitive Power BI dashboards. I thrive on uncovering the hidden stories within data to help organizations solve complex problems and achieve their goals.</p>
             </div>
         </div>
-
         <hr class="section-heading-spacer">
-
         <!-- Core Competencies with Icons (Table Layout) -->
         <table style="width: 100%; border: none; margin-top: 40px;">
             <tbody>
@@ -40,7 +62,6 @@ title: Tongai Zinaka | Data & Business Intelligence Analyst
                 <!-- Second Row of Skills -->
                 <tr style="text-align: center;">
                     <td style="width: 50%; vertical-align: top; padding: 20px;">
-                        <!-- THE ICON HAS BEEN CHANGED HERE -->
                         <i class="fa fa-signal fa-5x" aria-hidden="true"></i>
                         <h3>BI & Visualization</h3>
                         <p class="lead">Developing interactive and insightful dashboards in Power BI with complex DAX measures to track KPIs.</p>
@@ -53,12 +74,10 @@ title: Tongai Zinaka | Data & Business Intelligence Analyst
                 </tr>
             </tbody>
         </table>
-
     </div>
     <!-- /.container -->
 </div>
 <!-- /.content-section-a -->
-
 
 <!-- This anchor is for the 'Projects' link in the navigation bar -->
 <a name="projects"></a>
@@ -67,11 +86,9 @@ title: Tongai Zinaka | Data & Business Intelligence Analyst
 <div class="content-section-b">
     <div class="container">
         <div class="row">
-            <!-- Image on the Left -->
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <img class="img-responsive" src="img/profitability-dashboard-screenshot.png" alt="Profitability Dashboard">
             </div>
-            <!-- Text on the Right -->
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <h2 class="section-heading">Project 1: Dimensional Modeling & Profitability Analysis</h2>
                 <p class="lead">This project focused on building a robust, query-optimized Star Schema model in SQL. The resulting Power BI dashboard uncovered a critical, previously unseen profitability crisis, proving that high revenue did not translate to profit.</p>
@@ -85,14 +102,12 @@ title: Tongai Zinaka | Data & Business Intelligence Analyst
 <div class="content-section-a">
     <div class="container">
         <div class="row">
-            <!-- Image on the Left -->
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <img class="img-responsive" src="img/lms-dashboard-screenshot.png" alt="LMS Dashboard">
             </div>
-            <!-- Text on the Right -->
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <h2 class="section-heading">Project 2: LMS Analytics (Group Project)</h2>
-                <p class="lead">As the BI Analyst on a four-person team, I developed a Power BI solution to analyse Learning Management System data, focusing on compliance, user engagement, and performance outcomes for a community housing group.</p>
+                <p class="lead">As the BI Analyst on a four-person team, I developed a Power BI solution to analyze Learning Management System data, focusing on compliance, user engagement, and performance outcomes for a community housing group.</p>
                 <p><a class="btn btn-primary" href="https://github.com/Tongai-Zinaka/RDAMP_LMS_Analytics_RCHG" target="_blank" role="button">View on GitHub »</a></p>
             </div>
         </div>
@@ -103,11 +118,9 @@ title: Tongai Zinaka | Data & Business Intelligence Analyst
 <div class="content-section-b">
     <div class="container">
         <div class="row">
-            <!-- Image on the Left -->
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <img class="img-responsive" src="img/sales-analysis-screenshot.png" alt="Sales Analysis Dashboard">
             </div>
-            <!-- Text on the Right -->
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <h2 class="section-heading">Project 3: Retail Sales Analysis</h2>
                 <p class="lead">An end-to-end exploratory data analysis of raw sales data. This project involved extensive data cleaning in Power Query and building an interactive dashboard to identify key insights related to regional performance and top-selling products.</p>
