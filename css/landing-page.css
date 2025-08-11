@@ -166,25 +166,6 @@ p.copyright {
 
 }
 
-/*
-// -- Custom Project Section Styles -- //
-*/
-
-.project-image {
-  width: 100%;
-  min-height: 450px; /* Sets a good default height for the image container */
-  background-size: cover; /* This is the magic property that makes the image fill the space */
-  background-position: center top; /* Aligns the image to the top, perfect for dashboards */
-  border: 1px solid #e7e7e7; /* Adds a subtle, clean border */
-  border-radius: 4px; /* Gives the image slightly rounded corners */
-}
-
-/* On smaller screens, add some space between the text and the image */
-@media (max-width: 767px) {
-  .project-image {
-    margin-top: 30px;
-  }
-}
 
 
 
