@@ -4,7 +4,7 @@ title: Tongai Zinaka
 email: tongaizinaka@gmail.com
 author: Tongai Zinaka
 description: > # Write an awesome description for your new site here.
-  Data & Business Intelligence Analyst specialising in Power BI, SQL, and data modeling. 
+  Data & Business Intelligence Analyst specializing in Power BI, SQL, and data modeling. 
   I transform complex data into actionable insights that drive strategic business decisions.
 
 # Head meta for Google search results
@@ -21,7 +21,3 @@ social:
     url: https://www.linkedin.com/in/tongai-zinaka/
   - title: github
     url: https://github.com/tongai-zinaka
-
-# Social media preview image
-image: /assets/images/social-preview.png
- 
