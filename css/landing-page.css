@@ -165,34 +165,3 @@ p.copyright {
     margin: 15px 0 0;
 
 }
-
-/*
-// -- Custom App Page Styles -- //
-*/
-
-/* Simple Fade-In Animation */
-.content-section-a, .content-section-b {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-/* Style for the "Pro Tip" box */
-.alert-warning {
-  padding: 15px;
-  margin-top: 20px;
-  background-color: #fcf8e3;
-  border: 1px solid #faebcc;
-  border-radius: 4px;
-  color: #8a6d3b;
-}
-
-.alert-warning .fa {
-  margin-right: 10px;
-}
-
-
-
-
-
-
