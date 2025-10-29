@@ -27,7 +27,7 @@ h6 {
 }
 
 .intro-header {
-    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-top: 50px;
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
@@ -112,8 +112,8 @@ h6 {
 .banner {
     padding: 100px 0;
     color: #f8f8f8;
-    /* The old background is now replaced by the new class below */
-    background: linear-gradient(rgba(45, 55, 65, 0.85), rgba(45, 55, 65, 0.85)), url(https://www.transparenttextures.com/patterns/cubes.png);
+    /* CORRECTED: Now layers a dark overlay on top of your original image */
+    background: linear-gradient(rgba(20, 20, 20, 0.7), rgba(20, 20, 20, 0.7)), url(../img/banner-bg.jpg) no-repeat center center;
     background-size: cover;
 }
 
@@ -166,14 +166,20 @@ p.copyright {
     margin: 15px 0 0;
 }
 
-/* --- Custom Styles for Zinaka Analytics Page --- */
+/* --- Custom Styles --- */
 
-/* New Header Background */
+/* NEW: Skill box alignment fix */
+.skill-box {
+    min-height: 220px; /* Adjust this value if needed */
+    margin-bottom: 20px;
+}
+
+/* App Page Header Background */
 .app-header-bg {
     background: linear-gradient(rgba(45, 55, 65, 0.85), rgba(45, 55, 65, 0.85)), url(https://www.transparenttextures.com/patterns/cubes.png);
 }
 
-/* GIF Styling */
+/* GIF Styling Fix */
 .app-gif {
     background-color: #ffffff;
     border: 1px solid #e7e7e7;
