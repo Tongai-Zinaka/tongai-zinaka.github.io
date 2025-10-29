@@ -112,7 +112,6 @@ h6 {
 .banner {
     padding: 100px 0;
     color: #f8f8f8;
-    /* CORRECTED: Now layers a dark overlay on top of your original image */
     background: linear-gradient(rgba(20, 20, 20, 0.7), rgba(20, 20, 20, 0.7)), url(../img/banner-bg.jpg) no-repeat center center;
     background-size: cover;
 }
@@ -168,15 +167,14 @@ p.copyright {
 
 /* --- Custom Styles --- */
 
-/* NEW: Skill box alignment fix */
-.skill-box {
-    min-height: 220px; /* Adjust this value if needed */
-    margin-bottom: 20px;
+/* NEW: Flexbox for perfect skill alignment */
+.skill-row {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-/* App Page Header Background */
-.app-header-bg {
-    background: linear-gradient(rgba(45, 55, 65, 0.85), rgba(45, 55, 65, 0.85)), url(https://www.transparenttextures.com/patterns/cubes.png);
+.skill-box {
+    margin-bottom: 20px;
 }
 
 /* GIF Styling Fix */
