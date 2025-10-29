@@ -112,7 +112,8 @@ h6 {
 .banner {
     padding: 100px 0;
     color: #f8f8f8;
-    background: url(../img/banner-bg.jpg) no-repeat center center;
+    /* The old background is now replaced by the new class below */
+    background: linear-gradient(rgba(45, 55, 65, 0.85), rgba(45, 55, 65, 0.85)), url(https://www.transparenttextures.com/patterns/cubes.png);
     background-size: cover;
 }
 
@@ -163,5 +164,20 @@ footer {
 
 p.copyright {
     margin: 15px 0 0;
+}
 
+/* --- Custom Styles for Zinaka Analytics Page --- */
+
+/* New Header Background */
+.app-header-bg {
+    background: linear-gradient(rgba(45, 55, 65, 0.85), rgba(45, 55, 65, 0.85)), url(https://www.transparenttextures.com/patterns/cubes.png);
+}
+
+/* GIF Styling */
+.app-gif {
+    background-color: #ffffff;
+    border: 1px solid #e7e7e7;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
