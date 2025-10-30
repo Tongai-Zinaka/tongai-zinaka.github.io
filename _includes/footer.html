@@ -44,3 +44,23 @@
     once: true
   });
 </script>
+<!-- Initialize Typed.js -->
+<script>
+  // Check if the typed-text element exists on the page
+  if (document.getElementById('typed-text')) {
+    var options = {
+      strings: [
+        'Data & Business Intelligence Analyst',
+        'Expert in Power BI & SQL',
+        'Transforming Data into Decisions',
+        'Building Insightful Dashboards'
+      ],
+      typeSpeed: 50,
+      backSpeed: 25,
+      backDelay: 2000,
+      startDelay: 500,
+      loop: true
+    };
+    var typed = new Typed('#typed-text', options);
+  }
+</script>
