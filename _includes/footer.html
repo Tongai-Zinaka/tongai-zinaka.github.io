@@ -64,11 +64,18 @@
     var typed = new Typed('#typed-text', options);
   }
 
-  // Initialize CountUp.js using AOS events
+  // Initialize CountUp.js and trigger with AOS
   const statsSection = document.getElementById('stats-section');
   if (statsSection) {
-    const count1 = new CountUp('count-up-1', 100, { enableScrollSpy: true, scrollSpyOnce: true, suffix: '%' });
-    const count2 = new CountUp('count-up-2', 5, { enableScrollSpy: true, scrollSpyOnce: true, suffix: '+' });
-    const count3 = new CountUp('count-up-3', 3, { enableScrollSpy: true, scrollSpyOnce: true });
+    const count1 = new CountUp('count-up-1', 100);
+    const count2 = new CountUp('count-up-2', 5);
+    const count3 = new CountUp('count-up-3', 3);
+    
+    // Add an event listener for when the AOS animation starts on the stats section
+    statsSection.addEventListener('aos:in', () => {
+        count1.start();
+        count2.start();
+        count3.start();
+    });
   }
 </script>
