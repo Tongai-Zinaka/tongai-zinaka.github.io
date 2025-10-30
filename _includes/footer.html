@@ -68,3 +68,27 @@
     var typed = new Typed('#typed-text', options);
   }
 </script>
+
+<!-- Initialize CountUp.js on Scroll -->
+<script>
+  // Check if the stats section exists on the page
+  const statsSection = document.getElementById('stats-section');
+  if (statsSection) {
+    const count1 = new CountUp('count-up-1', 100);
+    const count2 = new CountUp('count-up-2', 3);
+    const count3 = new CountUp('count-up-3', 2);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          count1.start();
+          count2.start();
+          count3.start();
+          observer.unobserve(entry.target); // Only run the animation once
+        }
+      });
+    }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
+
+    observer.observe(statsSection);
+  }
+</script>
