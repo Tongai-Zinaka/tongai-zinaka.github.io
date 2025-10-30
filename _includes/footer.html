@@ -4,7 +4,6 @@
             <div class="col-lg-12" style="text-align: center;">
                 <ul class="list-inline">
                     <li>
-                        <!-- NEW HOME LINK ADDED -->
                         <a href="/">Home</a>
                     </li>
                     <li class="footer-menu-divider">&sdot;</li>
@@ -34,28 +33,25 @@
     </div>
 </footer>
 
-<!-- Typed.js for Dynamic Header Text -->
+<!-- Library Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.8/dist/countUp.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
-<!-- Animate On Scroll Library JavaScript -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- Initialization Scripts -->
 <script>
+  // Initialize Animate on Scroll
   AOS.init({
     duration: 800,
     once: true
   });
-</script>
-<!-- CountUp.js for Animated Statistics -->
-<script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.8/dist/countUp.umd.js"></script>
 
-<!-- Initialize Typed.js -->
-<script>
-  // Check if the typed-text element exists on the page
+  // Initialize Typed.js
   if (document.getElementById('typed-text')) {
     var options = {
       strings: [
         'Data &amp; Business Intelligence Analyst',
-        'Expert in Power BI &amp; SQL',
+        'Expert in Power BI & SQL',
         'Transforming Data into Decisions',
         'Building Insightful Dashboards'
       ],
@@ -67,28 +63,12 @@
     };
     var typed = new Typed('#typed-text', options);
   }
-</script>
 
-<!-- Initialize CountUp.js on Scroll -->
-<script>
-  // Check if the stats section exists on the page
+  // Initialize CountUp.js using AOS events
   const statsSection = document.getElementById('stats-section');
   if (statsSection) {
-    const count1 = new CountUp('count-up-1', 100);
-    const count2 = new CountUp('count-up-2', 3);
-    const count3 = new CountUp('count-up-3', 2);
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          count1.start();
-          count2.start();
-          count3.start();
-          observer.unobserve(entry.target); // Only run the animation once
-        }
-      });
-    }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
-
-    observer.observe(statsSection);
+    const count1 = new CountUp('count-up-1', 100, { enableScrollSpy: true, scrollSpyOnce: true, suffix: '%' });
+    const count2 = new CountUp('count-up-2', 5, { enableScrollSpy: true, scrollSpyOnce: true, suffix: '+' });
+    const count3 = new CountUp('count-up-3', 3, { enableScrollSpy: true, scrollSpyOnce: true });
   }
 </script>
