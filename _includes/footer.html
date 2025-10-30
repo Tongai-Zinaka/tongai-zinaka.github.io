@@ -34,7 +34,6 @@
 </footer>
 
 <!-- Library Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/countup.js@2.0.8/dist/countUp.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
@@ -62,30 +61,5 @@
       loop: true
     };
     var typed = new Typed('#typed-text', options);
-  }
-
-  // Initialize CountUp.js using a MutationObserver for reliability
-  const statsSection = document.getElementById('stats-section');
-  if (statsSection) {
-    const count1 = new CountUp('count-up-1', 100, { suffix: '%' });
-    const count2 = new CountUp('count-up-2', 5, { suffix: '+' });
-    const count3 = new CountUp('count-up-3', 3);
-
-    const observer = new MutationObserver((mutationsList, observer) => {
-      for(const mutation of mutationsList) {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-          // Check if the 'aos-animate' class has been added
-          if (mutation.target.classList.contains('aos-animate')) {
-            count1.start();
-            count2.start();
-            count3.start();
-            observer.disconnect(); // Stop observing once the animation has started
-          }
-        }
-      }
-    });
-
-    // Start observing the stats section for class attribute changes
-    observer.observe(statsSection, { attributes: true });
   }
 </script>
