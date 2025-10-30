@@ -196,7 +196,7 @@ p.copyright {
 }
 
 .skill-item:hover .fa {
-    color: #2c3e50; /* Changes icon color on hover - choose a color you like */
+    color: #427d8c; /* Changes icon color on hover - choose a color you like */
 }
 
 /* --- Interactive Section Heading Effect --- */
@@ -208,3 +208,4 @@ p.copyright {
     transform: scale(1.03); /* A very subtle growth effect */
     color: #2980b9; /* A professional blue color on hover */
 }
+
