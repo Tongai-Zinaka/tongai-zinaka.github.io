@@ -185,3 +185,16 @@ p.copyright {
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
+
+/* --- Interactive Skill Icon Effect --- */
+.skill-item {
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.skill-item:hover {
+    transform: scale(1.1); /* Makes the item slightly larger */
+}
+
+.skill-item:hover .fa {
+    color: #2c3e50; /* Changes icon color on hover - choose a color you like */
+}
