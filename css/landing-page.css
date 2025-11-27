@@ -235,3 +235,15 @@ p.copyright {
     z-index: 1000;
     border-radius: 50%; /* Makes it a circle */
 }
+
+/* --- Project Carousel Styles --- */
+.project-carousel {
+    border: 1px solid #e7e7e7;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures the rounded corners apply to the images */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+.project-carousel .carousel-control.left,
+.project-carousel .carousel-control.right {
+    background-image: none; /* Removes default Bootstrap gradient */
+}
