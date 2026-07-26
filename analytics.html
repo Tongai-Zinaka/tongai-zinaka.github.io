@@ -36,7 +36,7 @@
     <div class="container">
       <div class="eyebrow">Live product</div>
       <h1 class="section-heading" style="font-size: clamp(34px, 5vw, 52px);">Zinaka Analytics</h1>
-      <p class="lead">A simple, free financial ledger for small business — track income, expenses, and profit in one clean, mobile-first app.</p>
+      <p class="lead">Welcome to Zinaka Analytics, a powerful, free financial ledger designed to empower your finances, whether personally or in business. Track your income, expenses, profits and losses, all to help you manage your money and run your business better.</p>
       <div class="hero-actions" style="margin-top: 26px;">
         <a class="btn btn-primary" href="https://zinaka-analytics.flutterflow.app/" target="_blank" rel="noopener">Launch the App</a>
       </div>
@@ -70,7 +70,7 @@
   <section class="section section-alt">
     <div class="container">
       <div class="feature-row">
-        <div class="feature-media reveal">
+        <div class="feature-media gif-frame reveal" data-lightbox>
           <img src="/img/zinaka-install.gif" alt="Zinaka Analytics installation guide" loading="lazy" onerror="this.parentElement.style.display='none'">
         </div>
         <div class="reveal reveal-delay-1">
@@ -88,7 +88,7 @@
   <section class="section">
     <div class="container">
       <div class="feature-row reverse">
-        <div class="feature-media reveal">
+        <div class="feature-media gif-frame reveal" data-lightbox>
           <img src="/img/zinaka-add.gif" alt="Adding a transaction in Zinaka Analytics" loading="lazy" onerror="this.parentElement.style.display='none'">
         </div>
         <div class="reveal reveal-delay-1">
@@ -104,7 +104,7 @@
   <section class="section section-alt">
     <div class="container">
       <div class="feature-row">
-        <div class="feature-media reveal">
+        <div class="feature-media gif-frame reveal" data-lightbox>
           <img src="/img/zinaka-history.gif" alt="Viewing transaction history in Zinaka Analytics" loading="lazy" onerror="this.parentElement.style.display='none'">
         </div>
         <div class="reveal reveal-delay-1">
@@ -120,7 +120,7 @@
   <section class="section">
     <div class="container">
       <div class="feature-row reverse">
-        <div class="feature-media reveal">
+        <div class="feature-media gif-frame reveal" data-lightbox>
           <img src="/img/zinaka-delete.gif" alt="Deleting a transaction in Zinaka Analytics" loading="lazy" onerror="this.parentElement.style.display='none'">
         </div>
         <div class="reveal reveal-delay-1">
@@ -132,8 +132,17 @@
     </div>
   </section>
 
+  <!-- Pro tip -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="cta-panel reveal" style="text-align: left; padding: 30px 36px;">
+        <p style="margin: 0; color: var(--slate);"><strong style="color: var(--signal);">Pro Tip for the Best Experience:</strong> This app is designed for cross-platform use. For the most reliable navigation, please use the on-screen back buttons within the app itself, as the native Android back button may not always behave as expected.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Final CTA -->
-  <section class="section">
+  <section class="section" style="padding-top: 0;">
     <div class="container">
       <div class="cta-panel reveal">
         <h2 class="section-heading">Ready to take control of your finances?</h2>
@@ -159,6 +168,12 @@
   <a id="back-to-top" href="#" title="Back to top">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
   </a>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox-overlay">
+    <div class="lightbox-close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg></div>
+    <img src="" alt="">
+  </div>
 
   <script src="/js/main.js"></script>
 </body>
