@@ -92,24 +92,10 @@ document.addEventListener('DOMContentLoaded', function () {
     counters.forEach(function (el) { counterObserver.observe(el); });
   }
 
-  /* ---------- Hero: typed query + chart draw-in ---------- */
-  var queryEl = document.getElementById('hero-query-text');
+  /* ---------- Hero: chart draw-in ---------- */
   var chartBars = document.querySelectorAll('.chart-bars .bar');
-  var queryString = 'SELECT insight FROM raw_data WHERE clarity = true;';
-
-  if (queryEl) {
-    var i = 0;
-    function typeChar() {
-      if (i <= queryString.length) {
-        queryEl.textContent = queryString.slice(0, i);
-        i++;
-        setTimeout(typeChar, 28);
-      } else {
-        // Once typing finishes, draw the chart
-        drawChart();
-      }
-    }
-    setTimeout(typeChar, 500);
+  if (chartBars.length) {
+    setTimeout(drawChart, 600);
   }
 
   function drawChart() {
