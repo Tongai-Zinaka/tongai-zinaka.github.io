@@ -217,7 +217,7 @@ h1, h2, h3, h4 {
   background: var(--signal);
   transition: width 0.3s var(--ease);
 }
-.nav-links a:hover { color: var(--white); }
+.nav-links a:hover { color: var(--signal); }
 .nav-links a:hover::after { width: 100%; }
 .nav-links a.active { color: var(--signal); }
 
