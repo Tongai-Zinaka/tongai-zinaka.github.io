@@ -92,19 +92,153 @@ document.addEventListener('DOMContentLoaded', function () {
     counters.forEach(function (el) { counterObserver.observe(el); });
   }
 
-  /* ---------- Hero: chart draw-in ---------- */
-  var chartBars = document.querySelectorAll('.chart-bars .bar');
-  if (chartBars.length) {
-    setTimeout(drawChart, 600);
-  }
+  /* ---------- Hero: cycling data-viz stage (bar / donut / line / scatter) ---------- */
+  var vizStage = document.getElementById('viz-stage');
+  if (vizStage) {
+    var SVG_NS = 'http://www.w3.org/2000/svg';
 
-  function drawChart() {
-    var heights = [38, 62, 90, 54, 74, 46];
-    chartBars.forEach(function (bar, idx) {
+    function buildBars() {
+      var values = [42, 68, 96, 58, 80, 50];
+      var colors = ['var(--teal)', 'var(--teal)', 'var(--signal)', 'var(--teal)', 'var(--teal)', 'var(--teal)'];
+      var barW = 44, gap = 18, baseline = 190;
+      var startX = (400 - (values.length * barW + (values.length - 1) * gap)) / 2;
+      var svg = '<svg viewBox="0 0 400 220">';
+      values.forEach(function (v, i) {
+        var h = v * 1.5;
+        var x = startX + i * (barW + gap);
+        svg += '<rect class="viz-bar" data-h="' + h + '" data-y="' + (baseline - h) + '" x="' + x + '" y="' + baseline + '" width="' + barW + '" height="0" rx="4" style="fill:' + colors[i] + '"></rect>';
+        svg += '<text class="viz-axis-label" x="' + (x + barW / 2) + '" y="212" text-anchor="middle">Q' + (i + 1) + '</text>';
+      });
+      svg += '</svg>';
+      return svg;
+    }
+    function animateBars() {
+      vizStage.querySelectorAll('.viz-bar').forEach(function (el, i) {
+        setTimeout(function () {
+          el.setAttribute('height', el.getAttribute('data-h'));
+          el.setAttribute('y', el.getAttribute('data-y'));
+        }, i * 90);
+      });
+    }
+
+    function buildDonut() {
+      var segs = [
+        { p: 42, color: 'var(--teal)' },
+        { p: 28, color: 'var(--signal)' },
+        { p: 18, color: 'var(--slate-dim)' },
+        { p: 12, color: 'var(--teal-dim)' }
+      ];
+      var r = 68, C = 2 * Math.PI * r;
+      var cumulative = 0;
+      var svg = '<svg viewBox="0 0 220 220"><g transform="translate(110,110) rotate(-90)">';
+      segs.forEach(function (s) {
+        var len = C * (s.p / 100);
+        var offsetFinal = -cumulative;
+        svg += '<circle class="viz-donut-seg" r="' + r + '" style="stroke:' + s.color + '" stroke-dasharray="' + len + ' ' + (C - len) + '" data-offset="' + offsetFinal + '" stroke-dashoffset="' + C + '"></circle>';
+        cumulative += len;
+      });
+      svg += '</g>';
+      var lx = 168;
+      segs.forEach(function (s, i) {
+        svg += '<circle class="viz-legend-dot" cx="' + lx + '" cy="' + (60 + i * 26) + '" r="5" style="fill:' + s.color + ';opacity:0"></circle>';
+        svg += '<text class="viz-axis-label viz-legend-dot" x="' + (lx + 12) + '" y="' + (64 + i * 26) + '" style="opacity:0">' + s.p + '%</text>';
+      });
+      svg += '</svg>';
+      return svg;
+    }
+    function animateDonut() {
+      vizStage.querySelectorAll('.viz-donut-seg').forEach(function (el, i) {
+        setTimeout(function () { el.setAttribute('stroke-dashoffset', el.getAttribute('data-offset')); }, i * 160);
+      });
+      vizStage.querySelectorAll('.viz-legend-dot').forEach(function (el, i) {
+        setTimeout(function () { el.style.opacity = 1; }, 500 + i * 120);
+      });
+    }
+
+    function buildLine() {
+      var pts = [[20, 150], [80, 110], [140, 130], [200, 70], [260, 95], [340, 40]];
+      var d = 'M' + pts.map(function (p) { return p.join(','); }).join(' L');
+      var area = d + ' L340,200 L20,200 Z';
+      var svg = '<svg viewBox="0 0 380 220">';
+      svg += '<path class="viz-line-area" d="' + area + '" style="fill:var(--teal-dim);opacity:0"></path>';
+      svg += '<path id="viz-line-path" class="viz-line-path" d="' + d + '" style="fill:none;stroke:var(--teal);stroke-width:3;stroke-linecap:round"></path>';
+      pts.forEach(function (p) {
+        svg += '<circle class="viz-line-dot" cx="' + p[0] + '" cy="' + p[1] + '" r="5" style="fill:var(--signal);opacity:0;transform:scale(0)"></circle>';
+      });
+      svg += '</svg>';
+      return svg;
+    }
+    function animateLine() {
+      var path = vizStage.querySelector('#viz-line-path');
+      if (path && path.getTotalLength) {
+        var len = path.getTotalLength();
+        path.style.strokeDasharray = len;
+        path.style.strokeDashoffset = len;
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            path.style.transition = 'stroke-dashoffset 1.4s var(--ease)';
+            path.style.strokeDashoffset = 0;
+          });
+        });
+      }
       setTimeout(function () {
-        bar.style.height = (heights[idx] || 50) + '%';
-      }, idx * 90);
-    });
+        var areaEl = vizStage.querySelector('.viz-line-area');
+        if (areaEl) areaEl.style.opacity = 1;
+      }, 900);
+      vizStage.querySelectorAll('.viz-line-dot').forEach(function (el, i) {
+        setTimeout(function () {
+          el.style.opacity = 1;
+          el.style.transform = 'scale(1)';
+        }, 1000 + i * 90);
+      });
+    }
+
+    function buildScatter() {
+      var pts = [
+        [40, 60, 14], [110, 130, 22], [190, 80, 10], [250, 150, 18],
+        [310, 60, 12], [70, 170, 9], [230, 40, 8], [340, 120, 16]
+      ];
+      var svg = '<svg viewBox="0 0 380 220">';
+      pts.forEach(function (p, i) {
+        var color = i % 3 === 0 ? 'var(--signal)' : 'var(--teal)';
+        svg += '<circle class="viz-scatter-dot" cx="' + p[0] + '" cy="' + p[1] + '" r="' + p[2] + '" style="fill:' + color + ';opacity:0;transform:scale(0)"></circle>';
+      });
+      svg += '</svg>';
+      return svg;
+    }
+    function animateScatter() {
+      vizStage.querySelectorAll('.viz-scatter-dot').forEach(function (el, i) {
+        setTimeout(function () {
+          el.style.opacity = 0.85;
+          el.style.transform = 'scale(1)';
+        }, i * 100);
+      });
+    }
+
+    var visuals = [
+      { build: buildBars, animate: animateBars },
+      { build: buildDonut, animate: animateDonut },
+      { build: buildLine, animate: animateLine },
+      { build: buildScatter, animate: animateScatter }
+    ];
+    var vIndex = 0;
+
+    function cycleViz() {
+      vizStage.style.opacity = 0;
+      setTimeout(function () {
+        vizStage.innerHTML = visuals[vIndex].build();
+        vizStage.style.opacity = 1;
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            visuals[vIndex].animate();
+          });
+        });
+        vIndex = (vIndex + 1) % visuals.length;
+      }, 350);
+    }
+
+    cycleViz();
+    setInterval(cycleViz, 5200);
   }
 
   /* ---------- Project card tilt on mouse move ---------- */
