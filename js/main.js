@@ -157,6 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function buildLine() {
       var pts = [[20, 150], [80, 110], [140, 130], [200, 70], [260, 95], [340, 40]];
+      var labels = ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6'];
       var d = 'M' + pts.map(function (p) { return p.join(','); }).join(' L');
       var area = d + ' L340,200 L20,200 Z';
       var svg = '<svg viewBox="0 0 380 220">';
@@ -165,21 +166,34 @@ document.addEventListener('DOMContentLoaded', function () {
       pts.forEach(function (p) {
         svg += '<circle class="viz-line-dot" cx="' + p[0] + '" cy="' + p[1] + '" r="5" style="fill:var(--signal);opacity:0;transform:scale(0)"></circle>';
       });
+      pts.forEach(function (p, i) {
+        svg += '<text class="viz-axis-label" x="' + p[0] + '" y="212" text-anchor="middle">' + labels[i] + '</text>';
+      });
       svg += '</svg>';
       return svg;
     }
     function animateLine() {
       var path = vizStage.querySelector('#viz-line-path');
-      if (path && path.getTotalLength) {
-        var len = path.getTotalLength();
-        path.style.strokeDasharray = len;
-        path.style.strokeDashoffset = len;
-        requestAnimationFrame(function () {
+      if (path && typeof path.getTotalLength === 'function') {
+        var len = 0;
+        try { len = path.getTotalLength(); } catch (err) { len = 0; }
+        if (len > 0) {
+          path.style.strokeDasharray = len;
+          path.style.strokeDashoffset = len;
           requestAnimationFrame(function () {
-            path.style.transition = 'stroke-dashoffset 1.4s var(--ease)';
-            path.style.strokeDashoffset = 0;
+            requestAnimationFrame(function () {
+              path.style.transition = 'stroke-dashoffset 1.4s var(--ease)';
+              path.style.strokeDashoffset = 0;
+            });
           });
-        });
+        } else {
+          // Fallback if getTotalLength isn't reliable: simple fade-in
+          path.style.opacity = 0;
+          requestAnimationFrame(function () {
+            path.style.transition = 'opacity 1s var(--ease)';
+            path.style.opacity = 1;
+          });
+        }
       }
       setTimeout(function () {
         var areaEl = vizStage.querySelector('.viz-line-area');
@@ -226,13 +240,17 @@ document.addEventListener('DOMContentLoaded', function () {
     function cycleViz() {
       vizStage.style.opacity = 0;
       setTimeout(function () {
-        vizStage.innerHTML = visuals[vIndex].build();
-        vizStage.style.opacity = 1;
-        requestAnimationFrame(function () {
+        try {
+          vizStage.innerHTML = visuals[vIndex].build();
+          vizStage.style.opacity = 1;
           requestAnimationFrame(function () {
-            visuals[vIndex].animate();
+            requestAnimationFrame(function () {
+              try { visuals[vIndex].animate(); } catch (err) { /* skip animation, chart still visible */ }
+            });
           });
-        });
+        } catch (err) {
+          vizStage.style.opacity = 1;
+        }
         vIndex = (vIndex + 1) % visuals.length;
       }, 350);
     }
