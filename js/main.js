@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
       segs.forEach(function (s) {
         var len = C * (s.p / 100);
         var offsetFinal = -cumulative;
-        svg += '<circle class="viz-donut-seg" r="' + r + '" style="stroke:' + s.color + '" stroke-dasharray="' + len + ' ' + (C - len) + '" data-offset="' + offsetFinal + '" stroke-dashoffset="' + C + '"></circle>';
+        svg += '<circle class="viz-donut-seg" r="' + r + '" style="stroke:' + s.color + '" stroke-dashoffset="' + offsetFinal + '" data-len="' + len + '" data-gap="' + (C - len) + '" stroke-dasharray="0 ' + C + '"></circle>';
         cumulative += len;
       });
       svg += '</g>';
@@ -148,7 +148,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     function animateDonut() {
       vizStage.querySelectorAll('.viz-donut-seg').forEach(function (el, i) {
-        setTimeout(function () { el.setAttribute('stroke-dashoffset', el.getAttribute('data-offset')); }, i * 160);
+        setTimeout(function () {
+          el.setAttribute('stroke-dasharray', el.getAttribute('data-len') + ' ' + el.getAttribute('data-gap'));
+        }, i * 160);
       });
       vizStage.querySelectorAll('.viz-legend-dot').forEach(function (el, i) {
         setTimeout(function () { el.style.opacity = 1; }, 500 + i * 120);
@@ -238,19 +240,20 @@ document.addEventListener('DOMContentLoaded', function () {
     var vIndex = 0;
 
     function renderViz() {
+      var current = vIndex;
+      vIndex = (vIndex + 1) % visuals.length;
       try {
-        vizStage.innerHTML = visuals[vIndex].build();
+        vizStage.innerHTML = visuals[current].build();
         vizStage.style.opacity = 1;
         requestAnimationFrame(function () {
           requestAnimationFrame(function () {
-            try { visuals[vIndex].animate(); } catch (err) { /* skip animation, chart still visible */ }
+            try { visuals[current].animate(); } catch (err) { /* skip animation, chart still visible */ }
           });
         });
       } catch (err) {
         // Keep whatever was already on screen rather than leaving the panel blank
         vizStage.style.opacity = 1;
       }
-      vIndex = (vIndex + 1) % visuals.length;
     }
 
     function cycleViz() {
