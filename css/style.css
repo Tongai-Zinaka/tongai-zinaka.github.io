@@ -130,6 +130,20 @@ h1, h2, h3, h4 {
   color: var(--slate);
   font-size: 18px;
   max-width: 620px;
+  transition: text-shadow 0.7s ease-out, color 0.7s ease-out;
+}
+.lead:hover {
+  color: var(--white);
+  text-shadow: 0 0 22px rgba(31, 147, 172, 0.55), 0 0 46px rgba(31, 147, 172, 0.25);
+  transition: text-shadow 0.15s ease-out, color 0.15s ease-out;
+}
+
+p {
+  transition: text-shadow 0.7s ease-out;
+}
+p:hover {
+  text-shadow: 0 0 18px rgba(31, 147, 172, 0.4), 0 0 38px rgba(31, 147, 172, 0.18);
+  transition: text-shadow 0.15s ease-out;
 }
 
 /* ============ Buttons ============ */
@@ -156,7 +170,7 @@ h1, h2, h3, h4 {
 }
 .btn-primary:hover {
   color: #1a1400;
-  box-shadow: 0 12px 32px -8px rgba(196, 154, 92, 0.55);
+  box-shadow: 0 14px 40px -6px rgba(196, 154, 92, 0.75);
 }
 .btn-ghost {
   background: transparent;
@@ -166,7 +180,7 @@ h1, h2, h3, h4 {
 .btn-ghost:hover {
   border-color: var(--teal);
   color: var(--teal);
-  box-shadow: 0 10px 26px -10px rgba(31, 147, 172, 0.4);
+  box-shadow: 0 14px 36px -8px rgba(31, 147, 172, 0.6);
 }
 
 /* ============ Navigation ============ */
@@ -351,6 +365,10 @@ h1, h2, h3, h4 {
   font-family: var(--font-mono);
   font-size: 11px;
   fill: rgba(245, 247, 250, 0.55);
+}
+.viz-axis-line {
+  stroke: rgba(245, 247, 250, 0.18);
+  stroke-width: 1;
 }
 .viz-donut-seg {
   fill: none;
