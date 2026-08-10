@@ -1,35 +1,33 @@
-# Landing Page Jekyll theme
+# tongaizinaka.co.zw
 
-Jekyll theme based on [landing-page bootstrap theme ](http://startbootstrap.com/templates/landing-page/)
+Personal portfolio site for Tongai Zinaka — Data & Business Intelligence Analyst.
 
-## How to use
- - Place a image in `/img/services/`
- - Create posts to display your services. Use the follow as an example:
+## Structure
 
-```txt
----
-layout: default
-img: ipad.png
-category: Services
-title: The service title
----
-The description of this service
+- `index.html` — Home (hero, about, project showcase carousel)
+- `analytics.html` — Zinaka Analytics app walkthrough
+- `resume.html` — Résumé (embeds `/assets/My Resume.pdf`)
+- `contact.html` — Contact links
+- `css/style.css` — All site styles (color tokens defined at the top in `:root`)
+- `js/main.js` — All site behavior (nav, reveal animations, hero chart cycle, project carousel, lightbox)
+- `img/` — Screenshots and app GIFs
+- `assets/My Resume.pdf` — Downloadable résumé
+
+## Editing colors
+
+All colors are CSS custom properties defined at the top of `css/style.css`:
+
+```css
+--ink       /* page background */
+--panel     /* card/panel background */
+--slate     /* body text */
+--signal    /* gold accent (CTAs, highlights) */
+--teal      /* teal accent (links, secondary highlights) */
 ```
 
-## Demo
-View this jekyll theme in action [here](https://swcool.github.io/landing-page-theme)
+Change these once and the whole site updates.
 
-## Screenshot
-![screenshot](https://raw.githubusercontent.com/swcool/landing-page-theme/master/img/screenshot.png)
+## Deploying
 
-===
-
-For more Jekyll details, read [documentation](http://jekyllrb.com/).
-This Jekyll theme used [Freelancer Jekyll theme](https://github.com/jeromelachaud/freelancer-theme/) as reference.
-
-## License
-The contents of this repository are licensed under the [Apache
-2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
-
-## Version
-1.0.1
+This is a static site served via GitHub Pages from the `main` branch, using the
+custom domain in `CNAME` (tongaizinaka.co.zw).
