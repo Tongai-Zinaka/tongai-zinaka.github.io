@@ -4,18 +4,21 @@
    ============================================ */
 
 :root {
-  /* Color tokens */
-  --ink: #030509;
-  --ink-soft: #060911;
-  --panel: #0c121d;
-  --panel-border: #1c2438;
-  --slate: #8b95a7;
-  --slate-dim: #5b6478;
-  --white: #f5f7fa;
-  --signal: #f2b705;
-  --signal-dim: #7a5f0a;
-  --teal: #2dd4bf;
-  --teal-dim: #103330;
+  /* Color tokens — matches brand palette (light gray page / navy banner / teal / gold) */
+  --ink: #eef0f3;
+  --ink-soft: #e3e6ea;
+  --panel: #ffffff;
+  --panel-border: #dbdfe4;
+  --slate: #56637a;
+  --slate-dim: #8993a6;
+  --white: #16233a;
+  --on-dark: #f5f7fa;
+  --signal: #c49a5c;
+  --signal-dim: #7a5f38;
+  --teal: #1f93ac;
+  --teal-dim: #123240;
+  --hero-bg: #12263c;
+  --hero-border: rgba(245, 247, 250, 0.14);
 
   /* Type */
   --font-display: 'Space Grotesk', sans-serif;
@@ -66,8 +69,8 @@ body::before {
   z-index: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(242, 183, 5, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(242, 183, 5, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(18, 38, 60, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 38, 60, 0.045) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 75%);
 }
@@ -110,7 +113,7 @@ h1, h2, h3, h4 {
   height: 7px;
   border-radius: 50%;
   background: var(--signal);
-  box-shadow: 0 0 0 4px rgba(242, 183, 5, 0.15);
+  box-shadow: 0 0 0 4px rgba(196, 154, 92, 0.18);
 }
 
 .section-heading {
@@ -147,7 +150,7 @@ h1, h2, h3, h4 {
 }
 .btn-primary:hover {
   color: #1a1400;
-  box-shadow: 0 10px 30px -8px rgba(242, 183, 5, 0.5);
+  box-shadow: 0 10px 30px -8px rgba(196, 154, 92, 0.45);
 }
 .btn-ghost {
   background: transparent;
@@ -155,6 +158,15 @@ h1, h2, h3, h4 {
   color: var(--white);
 }
 .btn-ghost:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+/* Ghost buttons on the navy hero/banner need light text instead of the default dark */
+.hero .btn-ghost, .page-intro .btn-ghost {
+  border-color: var(--hero-border);
+  color: var(--on-dark);
+}
+.hero .btn-ghost:hover, .page-intro .btn-ghost:hover {
   border-color: var(--teal);
   color: var(--teal);
 }
@@ -172,7 +184,7 @@ h1, h2, h3, h4 {
   transition: background 0.4s var(--ease), border-color 0.4s var(--ease), height 0.4s var(--ease);
 }
 .navbar.scrolled {
-  background: rgba(11, 17, 32, 0.85);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--panel-border);
   height: 64px;
@@ -190,7 +202,10 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   gap: 8px;
+  color: var(--on-dark);
+  transition: color 0.4s var(--ease);
 }
+.navbar.scrolled .brand { color: var(--white); }
 .brand::before {
   content: '>';
   color: var(--signal);
@@ -201,13 +216,22 @@ h1, h2, h3, h4 {
   list-style: none;
   margin: 0; padding: 0;
 }
+/* Default: light text, correct both for the transparent bar over the navy
+   banner AND for the mobile flyout panel (which always has a navy background) */
 .nav-links a {
   font-size: 14px;
-  color: var(--slate);
+  color: rgba(245, 247, 250, 0.78);
   font-weight: 500;
   position: relative;
   padding: 6px 0;
   transition: color 0.25s var(--ease);
+}
+/* Desktop only: once the bar itself has scrolled onto a white background,
+   flip link text dark. Scoped to desktop so it never affects the mobile
+   flyout, which keeps its own navy background regardless of scroll state. */
+@media (min-width: 861px) {
+  .navbar.scrolled .nav-links a { color: var(--slate); }
+  .navbar.scrolled .nav-links a.active { color: var(--signal); }
 }
 .nav-links a::after {
   content: '';
@@ -232,9 +256,10 @@ h1, h2, h3, h4 {
 }
 .nav-toggle span {
   width: 22px; height: 2px;
-  background: var(--white);
-  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+  background: var(--on-dark);
+  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease), background 0.3s var(--ease);
 }
+.navbar.scrolled .nav-toggle span { background: var(--white); }
 .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -247,11 +272,11 @@ h1, h2, h3, h4 {
     right: 0;
     left: 0;
     flex-direction: column;
-    background: rgba(11, 17, 32, 0.98);
+    background: rgba(18, 38, 60, 0.98);
     backdrop-filter: blur(10px);
     padding: 24px 28px;
     gap: 20px;
-    border-bottom: 1px solid var(--panel-border);
+    border-bottom: 1px solid var(--hero-border);
     transform: translateY(-120%);
     opacity: 0;
     transition: transform 0.4s var(--ease), opacity 0.3s var(--ease);
@@ -269,6 +294,14 @@ h1, h2, h3, h4 {
   align-items: center;
   padding-top: var(--nav-height);
   position: relative;
+  background: var(--hero-bg);
+  color: var(--on-dark);
+}
+.hero .lead, .page-intro .lead { color: rgba(245, 247, 250, 0.75); }
+.hero .scroll-cue { color: rgba(245, 247, 250, 0.55); }
+.hero .scroll-cue .arrow {
+  border-right-color: rgba(245, 247, 250, 0.55);
+  border-bottom-color: rgba(245, 247, 250, 0.55);
 }
 .hero-grid {
   display: grid;
@@ -565,7 +598,7 @@ h1, h2, h3, h4 {
   content: '';
   position: absolute;
   width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(242,183,5,0.12), transparent 70%);
+  background: radial-gradient(circle, rgba(196,154,92,0.14), transparent 70%);
   top: -150px; left: 50%;
   transform: translateX(-50%);
 }
@@ -630,6 +663,8 @@ footer {
 /* ============ Page intro (sub-pages) ============ */
 .page-intro {
   padding: calc(var(--nav-height) + 80px) 0 60px;
+  background: var(--hero-bg);
+  color: var(--on-dark);
 }
 .page-intro .eyebrow { margin-bottom: 18px; }
 
@@ -707,7 +742,7 @@ input, textarea {
 input:focus, textarea:focus {
   outline: none;
   border-color: var(--teal);
-  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.15);
+  box-shadow: 0 0 0 3px rgba(31, 147, 172, 0.18);
 }
 textarea { resize: vertical; min-height: 130px; }
 
@@ -876,8 +911,8 @@ textarea { resize: vertical; min-height: 130px; }
   height: 38px;
   border-radius: 50%;
   background: rgba(11, 17, 32, 0.75);
-  border: 1px solid var(--panel-border);
-  color: var(--white);
+  border: 1px solid rgba(245, 247, 250, 0.25);
+  color: var(--on-dark);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -915,9 +950,9 @@ textarea { resize: vertical; min-height: 130px; }
   left: 14px;
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--white);
+  color: var(--on-dark);
   background: rgba(11, 17, 32, 0.75);
-  border: 1px solid var(--panel-border);
+  border: 1px solid rgba(245, 247, 250, 0.25);
   padding: 5px 10px;
   border-radius: 20px;
   z-index: 2;
@@ -978,9 +1013,9 @@ textarea { resize: vertical; min-height: 130px; }
   right: 10px;
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--white);
+  color: var(--on-dark);
   background: rgba(11, 17, 32, 0.75);
-  border: 1px solid var(--panel-border);
+  border: 1px solid rgba(245, 247, 250, 0.25);
   padding: 4px 10px;
   border-radius: 20px;
   opacity: 0;
