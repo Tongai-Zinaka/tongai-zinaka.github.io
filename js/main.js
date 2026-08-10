@@ -128,9 +128,10 @@ document.addEventListener('DOMContentLoaded', function () {
         { p: 18, color: 'var(--slate-dim)' },
         { p: 12, color: 'var(--teal-dim)' }
       ];
-      var r = 68, C = 2 * Math.PI * r;
+      var r = 62, C = 2 * Math.PI * r;
+      var cx = 100, cy = 110;
       var cumulative = 0;
-      var svg = '<svg viewBox="0 0 220 220"><g transform="translate(110,110) rotate(-90)">';
+      var svg = '<svg viewBox="0 0 380 220"><g transform="translate(' + cx + ',' + cy + ') rotate(-90)">';
       segs.forEach(function (s) {
         var len = C * (s.p / 100);
         var offsetFinal = -cumulative;
@@ -138,10 +139,11 @@ document.addEventListener('DOMContentLoaded', function () {
         cumulative += len;
       });
       svg += '</g>';
-      var lx = 168;
+      var lx = cx + r + 46;
+      var ly = cy - (segs.length - 1) * 13;
       segs.forEach(function (s, i) {
-        svg += '<circle class="viz-legend-dot" cx="' + lx + '" cy="' + (60 + i * 26) + '" r="5" style="fill:' + s.color + ';opacity:0"></circle>';
-        svg += '<text class="viz-axis-label viz-legend-dot" x="' + (lx + 12) + '" y="' + (64 + i * 26) + '" style="opacity:0">' + s.p + '%</text>';
+        svg += '<circle class="viz-legend-dot" cx="' + lx + '" cy="' + (ly + i * 26) + '" r="5" style="fill:' + s.color + ';opacity:0"></circle>';
+        svg += '<text class="viz-axis-label viz-legend-dot" x="' + (lx + 14) + '" y="' + (ly + 4 + i * 26) + '" style="opacity:0">' + s.p + '%</text>';
       });
       svg += '</svg>';
       return svg;
@@ -215,6 +217,8 @@ document.addEventListener('DOMContentLoaded', function () {
         [310, 60, 12], [70, 170, 9], [230, 40, 8], [340, 120, 16]
       ];
       var svg = '<svg viewBox="0 0 380 220">';
+      svg += '<line class="viz-axis-line" x1="10" y1="10" x2="10" y2="195"></line>';
+      svg += '<line class="viz-axis-line" x1="10" y1="195" x2="370" y2="195"></line>';
       pts.forEach(function (p, i) {
         var color = i % 3 === 0 ? 'var(--signal)' : 'var(--teal)';
         svg += '<circle class="viz-scatter-dot" cx="' + p[0] + '" cy="' + p[1] + '" r="' + p[2] + '" style="fill:' + color + ';opacity:0;transform:scale(0)"></circle>';
