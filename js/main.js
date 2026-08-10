@@ -237,25 +237,28 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
     var vIndex = 0;
 
-    function cycleViz() {
-      vizStage.style.opacity = 0;
-      setTimeout(function () {
-        try {
-          vizStage.innerHTML = visuals[vIndex].build();
-          vizStage.style.opacity = 1;
+    function renderViz() {
+      try {
+        vizStage.innerHTML = visuals[vIndex].build();
+        vizStage.style.opacity = 1;
+        requestAnimationFrame(function () {
           requestAnimationFrame(function () {
-            requestAnimationFrame(function () {
-              try { visuals[vIndex].animate(); } catch (err) { /* skip animation, chart still visible */ }
-            });
+            try { visuals[vIndex].animate(); } catch (err) { /* skip animation, chart still visible */ }
           });
-        } catch (err) {
-          vizStage.style.opacity = 1;
-        }
-        vIndex = (vIndex + 1) % visuals.length;
-      }, 350);
+        });
+      } catch (err) {
+        // Keep whatever was already on screen rather than leaving the panel blank
+        vizStage.style.opacity = 1;
+      }
+      vIndex = (vIndex + 1) % visuals.length;
     }
 
-    cycleViz();
+    function cycleViz() {
+      vizStage.style.opacity = 0;
+      setTimeout(renderViz, 350);
+    }
+
+    renderViz();
     setInterval(cycleViz, 5200);
   }
 
