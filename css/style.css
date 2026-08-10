@@ -16,7 +16,7 @@
   --signal: #c49a5c;
   --signal-dim: #7a5f38;
   --teal: #1f93ac;
-  --teal-dim: #123240;
+  --teal-dim: #3f6c78;
   --hero-bg: #12263c;
   --hero-border: rgba(245, 247, 250, 0.14);
 
@@ -161,15 +161,6 @@ h1, h2, h3, h4 {
   border-color: var(--teal);
   color: var(--teal);
 }
-/* Ghost buttons on the navy hero/banner need light text instead of the default dark */
-.hero .btn-ghost, .page-intro .btn-ghost {
-  border-color: var(--hero-border);
-  color: var(--on-dark);
-}
-.hero .btn-ghost:hover, .page-intro .btn-ghost:hover {
-  border-color: var(--teal);
-  color: var(--teal);
-}
 
 /* ============ Navigation ============ */
 .navbar {
@@ -179,15 +170,13 @@ h1, h2, h3, h4 {
   height: var(--nav-height);
   display: flex;
   align-items: center;
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  transition: background 0.4s var(--ease), border-color 0.4s var(--ease), height 0.4s var(--ease);
+  background: var(--hero-bg);
+  border-bottom: 1px solid var(--hero-border);
+  transition: height 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--panel-border);
   height: 64px;
+  box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.35);
 }
 .navbar .container {
   display: flex;
@@ -203,9 +192,7 @@ h1, h2, h3, h4 {
   align-items: center;
   gap: 8px;
   color: var(--on-dark);
-  transition: color 0.4s var(--ease);
 }
-.navbar.scrolled .brand { color: var(--white); }
 .brand::before {
   content: '>';
   color: var(--signal);
@@ -216,8 +203,6 @@ h1, h2, h3, h4 {
   list-style: none;
   margin: 0; padding: 0;
 }
-/* Default: light text, correct both for the transparent bar over the navy
-   banner AND for the mobile flyout panel (which always has a navy background) */
 .nav-links a {
   font-size: 14px;
   color: rgba(245, 247, 250, 0.78);
@@ -225,13 +210,6 @@ h1, h2, h3, h4 {
   position: relative;
   padding: 6px 0;
   transition: color 0.25s var(--ease);
-}
-/* Desktop only: once the bar itself has scrolled onto a white background,
-   flip link text dark. Scoped to desktop so it never affects the mobile
-   flyout, which keeps its own navy background regardless of scroll state. */
-@media (min-width: 861px) {
-  .navbar.scrolled .nav-links a { color: var(--slate); }
-  .navbar.scrolled .nav-links a.active { color: var(--signal); }
 }
 .nav-links a::after {
   content: '';
@@ -257,9 +235,8 @@ h1, h2, h3, h4 {
 .nav-toggle span {
   width: 22px; height: 2px;
   background: var(--on-dark);
-  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease), background 0.3s var(--ease);
+  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
 }
-.navbar.scrolled .nav-toggle span { background: var(--white); }
 .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -272,8 +249,7 @@ h1, h2, h3, h4 {
     right: 0;
     left: 0;
     flex-direction: column;
-    background: rgba(18, 38, 60, 0.98);
-    backdrop-filter: blur(10px);
+    background: var(--hero-bg);
     padding: 24px 28px;
     gap: 20px;
     border-bottom: 1px solid var(--hero-border);
@@ -294,14 +270,6 @@ h1, h2, h3, h4 {
   align-items: center;
   padding-top: var(--nav-height);
   position: relative;
-  background: var(--hero-bg);
-  color: var(--on-dark);
-}
-.hero .lead, .page-intro .lead { color: rgba(245, 247, 250, 0.75); }
-.hero .scroll-cue { color: rgba(245, 247, 250, 0.55); }
-.hero .scroll-cue .arrow {
-  border-right-color: rgba(245, 247, 250, 0.55);
-  border-bottom-color: rgba(245, 247, 250, 0.55);
 }
 .hero-grid {
   display: grid;
@@ -349,8 +317,8 @@ h1, h2, h3, h4 {
 
 /* Signature: chart that draws itself */
 .chart-panel {
-  background: var(--panel);
-  border: 1px solid var(--panel-border);
+  background: var(--hero-bg);
+  border: 1px solid var(--hero-border);
   border-radius: 14px;
   padding: 26px;
   position: relative;
@@ -375,7 +343,7 @@ h1, h2, h3, h4 {
 .viz-axis-label {
   font-family: var(--font-mono);
   font-size: 11px;
-  fill: var(--slate-dim);
+  fill: rgba(245, 247, 250, 0.55);
 }
 .viz-donut-seg {
   fill: none;
@@ -607,7 +575,9 @@ h1, h2, h3, h4 {
 
 /* ============ Footer ============ */
 footer {
-  border-top: 1px solid var(--panel-border);
+  background: var(--hero-bg);
+  color: var(--on-dark);
+  border-top: 1px solid var(--hero-border);
   padding: 40px 0;
 }
 .footer-inner {
@@ -625,13 +595,13 @@ footer {
   flex-wrap: wrap;
 }
 .footer-links a {
-  color: var(--slate);
+  color: rgba(245, 247, 250, 0.78);
   font-size: 14px;
   transition: color 0.25s var(--ease);
 }
 .footer-links a:hover { color: var(--signal); }
 .copyright {
-  color: var(--slate-dim);
+  color: rgba(245, 247, 250, 0.45);
   font-size: 13px;
   font-family: var(--font-mono);
 }
@@ -663,8 +633,6 @@ footer {
 /* ============ Page intro (sub-pages) ============ */
 .page-intro {
   padding: calc(var(--nav-height) + 80px) 0 60px;
-  background: var(--hero-bg);
-  color: var(--on-dark);
 }
 .page-intro .eyebrow { margin-bottom: 18px; }
 
@@ -944,20 +912,6 @@ textarea { resize: vertical; min-height: 130px; }
   background: var(--signal);
   transform: scale(1.3);
 }
-.showcase-caption {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--on-dark);
-  background: rgba(11, 17, 32, 0.75);
-  border: 1px solid rgba(245, 247, 250, 0.25);
-  padding: 5px 10px;
-  border-radius: 20px;
-  z-index: 2;
-}
-
 /* ============ Lightbox ============ */
 .lightbox-overlay {
   position: fixed;
