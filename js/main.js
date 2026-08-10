@@ -311,77 +311,92 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ---------- Project showcase carousel ---------- */
-  var carousel = document.querySelector('.showcase-carousel');
-  if (carousel) {
-    var track = carousel.querySelector('.carousel-track');
-    var slides = carousel.querySelectorAll('.carousel-slide');
-    var dotsWrap = carousel.querySelector('.carousel-dots');
-    var dots = dotsWrap ? dotsWrap.querySelectorAll('.dot') : [];
-    var current = 0;
-    var total = slides.length;
-    var autoTimer;
+  try {
+    var carousel = document.querySelector('.showcase-carousel');
+    if (carousel) {
+      var track = carousel.querySelector('.carousel-track');
+      var slides = carousel.querySelectorAll('.carousel-slide');
+      var dotsWrap = carousel.querySelector('.carousel-dots');
+      var dots = dotsWrap ? dotsWrap.querySelectorAll('.dot') : [];
+      var nextBtn = carousel.querySelector('.carousel-arrow.next');
+      var prevBtn = carousel.querySelector('.carousel-arrow.prev');
+      var current = 0;
+      var total = slides.length;
+      var autoTimer;
 
-    function goTo(idx) {
-      current = (idx + total) % total;
-      track.style.transform = 'translateX(-' + (current * 100) + '%)';
-      dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
+      if (track && total > 0) {
+        function goTo(idx) {
+          current = (idx + total) % total;
+          track.style.transform = 'translateX(-' + (current * 100) + '%)';
+          dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
+        }
+        function startAuto() {
+          clearInterval(autoTimer);
+          if (total > 1) {
+            autoTimer = setInterval(function () { goTo(current + 1); }, 4500);
+          }
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', function () { goTo(current + 1); startAuto(); });
+        }
+        if (prevBtn) {
+          prevBtn.addEventListener('click', function () { goTo(current - 1); startAuto(); });
+        }
+        dots.forEach(function (dot, i) {
+          dot.addEventListener('click', function () { goTo(i); startAuto(); });
+        });
+
+        // Basic swipe support
+        var touchStartX = 0;
+        carousel.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+        carousel.addEventListener('touchend', function (e) {
+          var diff = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(diff) > 40) { goTo(current + (diff < 0 ? 1 : -1)); startAuto(); }
+        }, { passive: true });
+
+        goTo(0);
+        startAuto();
+      }
     }
-    function startAuto() {
-      clearInterval(autoTimer);
-      autoTimer = setInterval(function () { goTo(current + 1); }, 4500);
-    }
-
-    carousel.querySelector('.carousel-arrow.next').addEventListener('click', function () {
-      goTo(current + 1); startAuto();
-    });
-    carousel.querySelector('.carousel-arrow.prev').addEventListener('click', function () {
-      goTo(current - 1); startAuto();
-    });
-    dots.forEach(function (dot, i) {
-      dot.addEventListener('click', function () { goTo(i); startAuto(); });
-    });
-
-    // Basic swipe support
-    var touchStartX = 0;
-    carousel.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; }, { passive: true });
-    carousel.addEventListener('touchend', function (e) {
-      var diff = e.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(diff) > 40) { goTo(current + (diff < 0 ? 1 : -1)); startAuto(); }
-    }, { passive: true });
-
-    goTo(0);
-    startAuto();
+  } catch (err) {
+    console.error('Showcase carousel failed to init:', err);
   }
 
   /* ---------- Lightbox (carousel images + app gifs) ---------- */
-  var lightbox = document.getElementById('lightbox');
-  if (lightbox) {
-    var lightboxImg = lightbox.querySelector('img');
-    var closeBtn = lightbox.querySelector('.lightbox-close');
+  try {
+    var lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+      var lightboxImg = lightbox.querySelector('img');
+      var closeBtn = lightbox.querySelector('.lightbox-close');
 
-    function openLightbox(src, alt) {
-      lightboxImg.src = src;
-      lightboxImg.alt = alt || '';
-      lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox() {
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-    document.querySelectorAll('[data-lightbox]').forEach(function (el) {
-      el.addEventListener('click', function () {
-        var img = el.querySelector('img') || el;
-        openLightbox(img.getAttribute('src'), img.getAttribute('alt'));
+      function openLightbox(src, alt) {
+        if (!lightboxImg) return;
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || '';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightbox() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      document.querySelectorAll('[data-lightbox]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          var img = el.querySelector('img') || el;
+          openLightbox(img.getAttribute('src'), img.getAttribute('alt'));
+        });
       });
-    });
-    closeBtn.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', function (e) {
-      if (e.target === lightbox) closeLightbox();
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeLightbox();
-    });
+      if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeLightbox();
+      });
+    }
+  } catch (err) {
+    console.error('Lightbox failed to init:', err);
   }
 
   /* ---------- Active nav link based on current page ---------- */
